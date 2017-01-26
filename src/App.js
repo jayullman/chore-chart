@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import './style/App.css';
+
+
+// during development, the different routes will all be
+// present on the main page until routing is learned
 
 class App extends Component {
   render() {
@@ -8,7 +12,12 @@ class App extends Component {
         <div className="App-header">
           <h2>Chore Chart</h2>
         </div>
-
+        <div className="route index-page">
+        </div>
+        <div className="route chore-tracker-page">
+        </div>
+        <div className="route settings-page">
+        </div>
       </div>
     );
   }
