@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import './style/App.css';
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { addUser } from './actions/actions'
+
+
+import SettingsPage from './containers/Settings-Page'
+
 
 // during development, the different routes will all be
 // present on the main page until routing is learned
+
 
 class App extends Component {
   render() {
@@ -16,11 +25,24 @@ class App extends Component {
         </div>
         <div className="route chore-tracker-page">
         </div>
-        <div className="route settings-page">
-        </div>
+        <SettingsPage
+            addUserActionCreator={this.props.addUser}
+        />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps() {
+  return {
+
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    addUser: addUser
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
