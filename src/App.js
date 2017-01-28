@@ -4,10 +4,12 @@ import './style/App.css';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { addUser } from './actions/actions'
+import { addUser, addChore } from './actions/actions';
 
 
-import SettingsPage from './containers/Settings-Page'
+import SettingsPage from './containers/Settings-Page';
+import ChoreList from './components/ChoreList';
+import UserList from './components/UserList';
 
 
 // during development, the different routes will all be
@@ -27,21 +29,31 @@ class App extends Component {
         </div>
         <SettingsPage
             addUserActionCreator={this.props.addUser}
+            addChoreActionCreator={this.props.addChore}
+        />
+        <h3>Current Chores</h3>
+        <ChoreList
+          chores={this.props.chores}
+        />
+        <UserList
+          users={this.props.users}
         />
       </div>
     );
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state) {
   return {
-
+    chores: state.chores,
+    users: state.users
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    addUser: addUser
+    addUser: addUser,
+    addChore: addChore
   }, dispatch);
 }
 
