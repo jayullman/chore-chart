@@ -8,17 +8,24 @@ export default function UserList(props) {
   // map chores to array of <li> items
   const userListItems = userList.map((user, i) => {
     return (
-        <li
+        <div
           key={i+ '_' + user}
         >
           {user.userName}
-        </li>
+          <button
+            onClick={()=>{
+              console.log(user)
+            }}
+          >
+            edit
+          </button>
+        </div>
     )
   });
 
   return (
-    <ul>
+    <div>
       {userListItems}
-    </ul>
+    </div>
   )
 }

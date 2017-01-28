@@ -4,24 +4,54 @@ import './style/App.css';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { addUser, addChore } from './actions/actions';
+import { addUser, addChore, selectUser } from './actions/actions';
 
 
-import SettingsPage from './containers/Settings-Page';
+import SettingsPage from './components/Settings-Page';
 import ChoreList from './components/ChoreList';
 import UserList from './components/UserList';
+import ChoreTable from './components/ChoreTable';
 
 
 // during development, the different routes will all be
 // present on the main page until routing is learned
 
-
 class App extends Component {
+
+
+  // handles when the active user is selected from the
+  // drop down menu
+  handleUserSelect = (event) => {
+    const selectedUser = event.target.value;
+    this.props.selectUser(selectedUser);
+  }
+
+
   render() {
+    // if there are no users added, render the following <option>
+    let userListItems;
+    if (this.props.users.length === 0) {
+      userListItems = <option>Add Housemate in Settings</option>;
+
+    // otherwise, add the list of possible users to select from
+    } else {
+      userListItems = this.props.users.map(user => {
+        return (
+          <option key={user.userName}>{user.userName}</option>
+        );
+      });
+    }
+console.log(this.props.currentUser);
     return (
       <div className="App">
         <div className="App-header">
           <h2>Chore Chart</h2>
+          <select
+            value={this.props.currentUser}
+            onChange={this.handleUserSelect}
+          >
+              {userListItems}
+          </select>
         </div>
         <div className="route index-page">
         </div>
@@ -38,6 +68,10 @@ class App extends Component {
         <UserList
           users={this.props.users}
         />
+        <ChoreTable
+          chores={this.props.chores}
+          users={this.props.users}
+        />
       </div>
     );
   }
@@ -46,14 +80,16 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     chores: state.chores,
-    users: state.users
+    users: state.users,
+    currentUser: state.currentUser
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     addUser: addUser,
-    addChore: addChore
+    addChore: addChore,
+    selectUser: selectUser
   }, dispatch);
 }
 

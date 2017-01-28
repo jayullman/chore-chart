@@ -8,18 +8,25 @@ export default function ChoreList(props) {
   // map chores to array of <li> items
   const choreListItems = choreList.map((chore, i) => {
     return (
-        <li
-          key={i+ '_' + chore}
+        <div
+          key={i+ '_' + chore.title}
         >
-          {chore}
-        </li>
+          {chore.title}
+          <button
+            onClick={()=>{
+              console.log(chore)
+            }}
+          >
+            edit
+          </button>
+        </div>
     )
   });
 
   return (
-    <ul>
+    <div>
       {choreListItems}
-    </ul>
+    </div>
   )
 
 }
