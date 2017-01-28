@@ -31,6 +31,8 @@
 .chore-row {
   display: flex;
   justify-content: flex-start;
+  border: 2px solid rgb(167, 167, 167);
+  margin-bottom: 5px;
 }
 
 /*.chore-row div {
@@ -38,15 +40,14 @@
 }*/
 
 .chore-title {
-
-  border: 1px solid red;
-
+  align-self: center;
+  text-align: left;
+  flex: 1 2 200px;
 }
 
 .chore-complete-container {
   flex: 0 0 100px;
   width: 200px;
-  background-color: yellow;
   align-self: center;
 }
 /*.chore-row div {
@@ -54,6 +55,12 @@
   padding-left: 10px;
   padding-right: 10px;
 }*/
+
+.completed-by {
+  align-self: center;
+  text-align: left;
+  flex: 1 2 200px;
+}
 
 .token {
   display: inline-block;

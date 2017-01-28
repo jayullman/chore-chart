@@ -27,14 +27,15 @@ export default function ChoreTable(props) {
             onClick={props.handleCompleteChore}
             value={chore.title}
           >
-            Complete
+            I Did It
           </button>
         </div>
         <div className="chore-title">
           {chore.title}
         </div>
 
-        <div>
+        <div className="completed-by">
+
           {completedBy}
 
         </div>
@@ -44,6 +45,7 @@ export default function ChoreTable(props) {
 
   return (
     <div className="chore-table">
+
 
           {rows}
     </div>
