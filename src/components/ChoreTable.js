@@ -8,6 +8,15 @@ export default function ChoreTable(props) {
   const userList = props.users;
 
   const rows = choreList.map((chore, i) => {
+    // create list of who completed each chore
+
+    const completedBy = chore.completedBy.map(user => {
+      return (
+        <div key={user} className="token">{user}</div>
+      )
+    });
+
+
     return (
       <div
         key={i + '_' + chore.title}
@@ -17,10 +26,14 @@ export default function ChoreTable(props) {
           {chore.title}
         </div>
         <div>
-          <button>Complete</button>
+          <button
+            onClick={props.handleCompleteChore}
+            value={chore.title}
+          >
+            Complete
+          </button>
         </div>
-        {/* TODO */}
-        {/*{chore.completedBy}*/}
+          {completedBy}
         <div>
 
         </div>

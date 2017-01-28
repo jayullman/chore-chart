@@ -4,7 +4,12 @@ import './style/App.css';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { addUser, addChore, selectUser } from './actions/actions';
+import {
+  addUser,
+  addChore,
+  selectUser,
+  completeChore
+ } from './actions/actions';
 
 
 import SettingsPage from './components/Settings-Page';
@@ -26,6 +31,12 @@ class App extends Component {
     this.props.selectUser(selectedUser);
   }
 
+  // handles when user clicks complete task on the ChoreTable
+  handleCompleteChore = (event) => {
+    const choreTitle = event.target.value;
+    console.log(this.props.currentUser);
+    this.props.completeChore(choreTitle, this.props.currentUser);
+  }
 
   render() {
     // if there are no users added, render the following <option>
@@ -71,6 +82,7 @@ console.log(this.props.currentUser);
         <ChoreTable
           chores={this.props.chores}
           users={this.props.users}
+          handleCompleteChore={this.handleCompleteChore}
         />
       </div>
     );
@@ -89,7 +101,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     addUser: addUser,
     addChore: addChore,
-    selectUser: selectUser
+    selectUser: selectUser,
+    completeChore: completeChore
   }, dispatch);
 }
 
