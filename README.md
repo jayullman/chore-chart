@@ -15,3 +15,4 @@ The is a single page app, utilizing react router to determine which React compon
 things i did:
 * implemented my own modals. Followed a tutorial located here:
 * heavy use of modules, making a strong attempt to separate concerns into different modules and components
+* used flexbox to create responsive elements and components
