@@ -12,6 +12,10 @@ export default function choresReducer(state = [], action) {
       return [...state, newChore];
 
     case COMPLETE_CHORE:
+      // do nothing if no user is selected
+      if (action.currentUser === "") {
+        return state;
+      }
       let newChoreList = [...state];
       const choreTitle = action.payload;
 

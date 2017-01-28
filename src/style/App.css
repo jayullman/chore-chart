@@ -21,16 +21,41 @@
 
 .chore-table {
   border: 1px solid black;
-  display: flex;
+  /*display: flex;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: column;*/
+  max-width: 800px;
+  margin: 0 auto;
 
 }
+.chore-row {
+  display: flex;
+  justify-content: flex-start;
+}
 
-.chore-row div {
+/*.chore-row div {
   display: inline-block;
+}*/
+
+.chore-title {
+
+  border: 1px solid red;
+
 }
+
+.chore-complete-container {
+  flex: 0 0 100px;
+  width: 200px;
+  background-color: yellow;
+  align-self: center;
+}
+/*.chore-row div {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+}*/
 
 .token {
   display: inline-block;
+  padding-left: 10px;
 }

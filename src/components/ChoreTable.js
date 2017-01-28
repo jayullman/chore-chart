@@ -22,10 +22,7 @@ export default function ChoreTable(props) {
         key={i + '_' + chore.title}
         className="chore-row"
       >
-        <div>
-          {chore.title}
-        </div>
-        <div>
+        <div className="chore-complete-container">
           <button
             onClick={props.handleCompleteChore}
             value={chore.title}
@@ -33,8 +30,12 @@ export default function ChoreTable(props) {
             Complete
           </button>
         </div>
-          {completedBy}
+        <div className="chore-title">
+          {chore.title}
+        </div>
+
         <div>
+          {completedBy}
 
         </div>
       </div>
