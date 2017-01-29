@@ -11,14 +11,15 @@ export default function UserList(props) {
         <div
           key={i+ '_' + user}
         >
-          {user.userName}
-          <button
-            onClick={()=>{
-              console.log(user)
-            }}
-          >
-            edit
-          </button>
+          <a
+            href="#"
+            onClick={(event) => {
+              event.preventDefault();
+              props.selectItemToEdit(user);
+            }}>
+            {user.userName}
+          </a>
+
         </div>
     )
   });

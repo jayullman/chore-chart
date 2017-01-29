@@ -12,7 +12,6 @@ export default function Summary(props) {
       return false;
     }
   });
-  console.log(otherUsers);
   // create array of <li>'s of chores not completed by the
   // current user
   let choresCurrentUserHasNotDone = [];
@@ -25,7 +24,7 @@ export default function Summary(props) {
         }
     });
 
-  
+
 
 
   return (

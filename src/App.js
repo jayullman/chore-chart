@@ -49,12 +49,10 @@ class App extends Component {
   // handles when user clicks complete task on the ChoreTable
   handleCompleteChore = (event) => {
     const choreTitle = event.target.value;
-    console.log(this.props.currentUser);
     this.props.completeChore(choreTitle, this.props.currentUser);
   }
 
   openModal = (message) => {
-    console.log(message);
     this.setState({
       modalMessage: message,
       isModalOpen: true
@@ -99,12 +97,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        {this.state.isModalOpen
-          ? <div
-              onClick={this.closeModal}
-              className="backdrop"
-            />
-          : null}
+    
         {this.state.isEditOpen
           ? <div
               onClick={this.closeEdit}
@@ -119,6 +112,7 @@ class App extends Component {
         >
           {this.state.isEditOpen
             ? <EditBox
+                openModal={this.openModal}
                 onClose={() => {this.closeEdit()}}
                 editItem={this.state.editItem}
               />

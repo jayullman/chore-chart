@@ -33,13 +33,7 @@ export default function Modal(props) {
         style={{backgroundColor: modalColor}}
 
       >
-        <h1>Modal Title</h1>
-        <p>{props.message}</p>
-        <button
-          onClick={props.onClose}
-        >
-          Close
-        </button>
+        <h4>{props.message}</h4>
       </div>
 
 

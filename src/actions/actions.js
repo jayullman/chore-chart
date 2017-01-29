@@ -4,8 +4,12 @@ import {
   SELECT_USER,
   COMPLETE_CHORE,
   DELETE_CHORE,
-  DELETE_USER
+  DELETE_USER,
+  EDIT_USER,
+  EDIT_CHORE
 } from './action-types';
+
+
 
 // this action will add the new user to the users array in the store
 export function addUser(userName, color) {
@@ -25,10 +29,10 @@ export function addChore(choreTitle) {
   }
 }
 
-export function selectUser(user) {
+export function selectUser(userName) {
   return {
     type: SELECT_USER,
-    payload: user
+    payload: userName
   }
 }
 
@@ -51,5 +55,21 @@ export function deleteUser(userIndex) {
   return {
     type: DELETE_USER,
     payload: userIndex
+  }
+}
+
+export function editUser(userObject, userIndex) {
+  return {
+    type: EDIT_USER,
+    payload: userObject,
+    oldIndex: userIndex
+  }
+}
+
+export function editChore(choreObject, choreIndex) {
+  return {
+    type: EDIT_CHORE,
+    payload: choreObject,
+    oldIndex: choreIndex
   }
 }

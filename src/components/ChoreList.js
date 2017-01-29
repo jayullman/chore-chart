@@ -11,14 +11,14 @@ export default function ChoreList(props) {
         <div
           key={i+ '_' + chore.title}
         >
-          {chore.title}
-          <button
-            onClick={()=>{
+          <a
+            href="#"
+            onClick={(event) => {
+              event.preventDefault();
               props.selectItemToEdit(chore);
-            }}
-          >
-            edit
-          </button>
+            }}>
+            {chore.title}
+          </a>
         </div>
     )
   });

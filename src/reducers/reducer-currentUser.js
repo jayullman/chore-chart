@@ -8,14 +8,14 @@ export default function currentUserReducer(state = "", action) {
 
     // handles when first user is added
     // that user is selected as current user by default
+
     case ADD_USER:
       if (state === "") {
-        console.log('yo');
         return action.payload.userName;
       } else {
         return state;
       }
-      
+
 
     default:
       return state;

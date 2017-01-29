@@ -43,6 +43,11 @@ export default class SettingsPage extends Component {
     this.props.openModal(chore + ' added to chores');
   }
 
+  // this function will clear our localStorage
+  handleDeleteData(event) {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div className="route settings-page">
@@ -91,8 +96,16 @@ export default class SettingsPage extends Component {
                 name="chore"
                 placeholder="Enter Chore"
               />
-              <button>Submit</button>
             </label>
+            <button>Submit</button>
+          </form>
+        </fieldset>
+        <fieldset>
+          <legend>Delete User Data</legend>
+          <form
+            onSubmit={this.handleDeleteData}
+          >
+            <button>Delete Data</button>
           </form>
         </fieldset>
       </div>

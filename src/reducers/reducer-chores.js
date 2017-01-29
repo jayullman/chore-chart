@@ -2,12 +2,13 @@ import {
   ADD_CHORE,
   COMPLETE_CHORE,
   DELETE_CHORE,
-  DELETE_USER 
+  EDIT_CHORE
 } from '../actions/action-types';
 
 export default function choresReducer(state = [], action) {
 
   switch (action.type) {
+    // TODO: do not add duplicate chore
     case ADD_CHORE:
       let newChore = {
         title: action.payload,
@@ -39,6 +40,11 @@ export default function choresReducer(state = [], action) {
     case DELETE_CHORE:
       let newChoresArray = [...state];
        newChoresArray.splice(action.payload, 1);
+       return newChoresArray;
+
+     case EDIT_CHORE:
+       newChoresArray = [...state];
+       newChoresArray.splice(action.oldIndex, 1, action.payload);
        return newChoresArray;
 
     default:
