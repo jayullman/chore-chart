@@ -6,7 +6,7 @@ const ERROR = "ERROR";
 
 export default function Modal(props) {
   let modalColor;
-  switch (props.modalType) {
+  switch (props.type) {
 
     case CONFIRM:
       modalColor = "green";
@@ -14,6 +14,7 @@ export default function Modal(props) {
 
     case ERROR:
       modalColor = "red";
+      console.log('error');
       break;
 
     default:

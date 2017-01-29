@@ -17,19 +17,7 @@ import {
   selectUser
 } from '../actions/actions';
 
-function findIndexOfUser(users, name) {
-  const userIndex = users.findIndex((user) => {
-    return user.userName === name;
-  });
-  return userIndex;
-}
-
-function findIndexOfChore(chores, title) {
-  const choreIndex = chores.findIndex((chore) => {
-    return chore.title === title
-  });
-  return choreIndex;
-}
+import * as helpers from '../helpers';
 
 
 class EditBox extends Component {
@@ -77,7 +65,7 @@ class EditBox extends Component {
           this.props.editUser({
             userName: this.state.nameInput,
             color: this.state.colorSelect
-          }, findIndexOfUser(this.props.users, this.props.editItem.userName));
+          }, helpers.findIndexOfUser(this.props.users, this.props.editItem.userName));
         }
 
       // update the currentUser if that user has been edited
@@ -91,7 +79,7 @@ class EditBox extends Component {
         this.props.editChore({
           title: this.state.choreInput,
           completedBy: [...this.props.editItem.completedBy]
-        }, findIndexOfChore(this.props.chores, this.props.editItem.title));
+        }, helpers.findIndexOfChore(this.props.chores, this.props.editItem.title));
       }
     }
 
@@ -102,7 +90,7 @@ class EditBox extends Component {
   deleteItem = () => {
     // if the item is a user
     if (this.state.type === "user") {
-      this.props.deleteUser(findIndexOfUser(this.props.users, this.props.editItem.userName));
+      this.props.deleteUser(helpers.findIndexOfUser(this.props.users, this.props.editItem.userName));
       this.props.openModal(this.props.editItem.userName + ' was removed from housemates');
       // update the currentUser if that user has been deleted
       if (this.props.currentUser === this.props.editItem.userName) {
@@ -110,7 +98,7 @@ class EditBox extends Component {
       }
     // if the item is a chore
     } else {
-      this.props.deleteChore(findIndexOfChore(this.props.chores, this.props.editItem.title));
+      this.props.deleteChore(helpers.findIndexOfChore(this.props.chores, this.props.editItem.title));
       this.props.openModal(this.props.editItem.title + ' was removed from chores');
     }
 

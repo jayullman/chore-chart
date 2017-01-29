@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import './style/App.css';
+import '../style/App.css';
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -10,16 +10,18 @@ import {
   addChore,
   selectUser,
   completeChore
- } from './actions/actions';
+} from '../actions/actions';
 
 
-import SettingsPage from './components/Settings-Page';
-import ChoreList from './components/ChoreList';
-import UserList from './components/UserList';
-import ChoreTable from './components/ChoreTable';
-import Summary from './components/Summary';
-import Modal from './components/Modal';
-import EditBox from './containers/EditBox';
+import SettingsPage from '../components/Settings-Page';
+import ChoreList from '../components/ChoreList';
+import UserList from '../components/UserList';
+import ChoreTable from '../components/ChoreTable';
+import Summary from '../components/Summary';
+import Modal from '../components/Modal';
+import EditBox from './EditBox';
+
+
 
 // during development, the different routes will all be
 // present on the main page until routing is learned
@@ -52,10 +54,11 @@ class App extends Component {
     this.props.completeChore(choreTitle, this.props.currentUser);
   }
 
-  openModal = (message) => {
+  openModal = (message, type) => {
     this.setState({
       modalMessage: message,
-      isModalOpen: true
+      isModalOpen: true,
+      modalType: type == undefined ? "" : type
     });
     setTimeout(() => {
       this.closeModal();
@@ -95,9 +98,11 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
 
-    
+
+        <div className="App">
+
+
         {this.state.isEditOpen
           ? <div
               onClick={this.closeEdit}
@@ -107,8 +112,8 @@ class App extends Component {
 
         <ReactCSSTransitionGroup
           transitionName="edit-box-transition"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
         >
           {this.state.isEditOpen
             ? <EditBox
@@ -158,7 +163,11 @@ class App extends Component {
             addUserActionCreator={this.props.addUser}
             addChoreActionCreator={this.props.addChore}
             openModal={this.openModal}
+            users={this.props.users}
+            chores={this.props.chores}
         />
+
+
         <h3>Current Chores</h3>
         <ChoreList
           selectItemToEdit={this.selectItemToEdit}
@@ -173,7 +182,13 @@ class App extends Component {
           users={this.props.users}
           handleCompleteChore={this.handleCompleteChore}
         />
+
+        <div>
+          {this.props.children}
+        </div>
+
       </div>
+
     );
   }
 }

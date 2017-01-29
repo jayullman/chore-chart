@@ -95,10 +95,10 @@
 */
 
 .modal {
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   padding: 10px;
-  top: 15%;
+  top: 50px;
   width: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -116,11 +116,11 @@
   transition: top 500ms ease-in,
               opacity 500ms ease-in;
   opacity: 1;
-  top: 15%;
+  top: 50px;
 }
 
 .modal-transition-leave {
-  top: 15%;
+  top: 50px;
 }
 
 .modal-transition-leave.modal-transition-leave-active {
@@ -142,9 +142,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #000;
-  border-radius: 20px;
+  border-radius: 5px;
   min-width: 300px;
   max-width: 700px;
+  background-color: #fff;
+
+
 }
 
 .edit-box-transition-enter {
@@ -152,7 +155,7 @@
 }
 
 .edit-box-transition-enter.edit-box-transition-enter-active {
-  transition: opacity 500ms ease-in;
+  transition: opacity 250ms ease-in;
   opacity: 1;
 
 }
@@ -162,6 +165,6 @@
 }
 
 .edit-box-transition-leave.edit-box-transition-leave-active {
-  transition: opacity 500ms ease-in;
+  transition: opacity 250ms ease-in;
   opacity: 0;
 }

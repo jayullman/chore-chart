@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import * as helpers from '../helpers';
+
 export default class SettingsPage extends Component {
   constructor() {
     super();
@@ -30,17 +32,37 @@ export default class SettingsPage extends Component {
     event.preventDefault();
     let userName = this.state.nameInput;
     let userColor = this.state.colorSelect;
-    this.props.addUserActionCreator(userName, userColor);
-    this.setState({nameInput: ""});
-    this.props.openModal(userName + ' was added as a housemate');
+
+    // check if user is unique
+    if (helpers.findIndexOfUser(this.props.users, userName) < 0) {
+      this.props.addUserActionCreator(userName, userColor);
+      this.setState({nameInput: ""});
+      this.props.openModal(userName + ' was added as a housemate');
+
+    // if user already exists, do not add to store and give error modal
+    } else {
+      this.props.openModal(userName + ' already exists', "ERROR");
+    }
+
   }
 
   handleSubmitChore = (event) => {
     event.preventDefault();
     let chore = this.state.choreInput;
-    this.props.addChoreActionCreator(chore);
-    this.setState({choreInput: ""});
-    this.props.openModal(chore + ' added to chores');
+
+    // check if chore is unique
+    if (helpers.findIndexOfChore(this.props.chores, chore) < 0) {
+
+      this.props.addChoreActionCreator(chore);
+      this.setState({choreInput: ""});
+      this.props.openModal(chore + ' added to chores');
+
+      // if chore already exists, do not add to store and give error modal
+    } else {
+      this.props.openModal(chore + ' already exists', "ERROR");
+
+    }
+
   }
 
   // this function will clear our localStorage
@@ -49,6 +71,7 @@ export default class SettingsPage extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="route settings-page">
         <fieldset>
