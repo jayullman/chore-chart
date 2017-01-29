@@ -25,6 +25,7 @@ export default function ChoreList(props) {
 
   return (
     <div>
+      <h4>Current Chores (click to edit)</h4>
       {choreListItems}
     </div>
   )

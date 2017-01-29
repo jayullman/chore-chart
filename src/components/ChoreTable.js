@@ -1,6 +1,28 @@
-// TODO: Add completedBy property to chores and action to add users
-
 import React from 'react';
+
+function createToken(name, users) {
+  // get user object
+  let userObject = null;
+  userObject = users.find((user) => {
+    if (user.userName === name) {
+      return true;
+    }
+  });
+
+  console.log(userObject.userName);
+  console.log(userObject.color);
+  return (
+    <div
+      style={{
+      color: '#fff',
+      backgroundColor: userObject.color
+      }}
+      className="token"
+    >
+      {name}
+    </div>
+  );
+}
 
 export default function ChoreTable(props) {
 
@@ -11,7 +33,7 @@ export default function ChoreTable(props) {
 
     const completedBy = chore.completedBy.map(user => {
       return (
-        <div key={user} className="token">{user}</div>
+        <div key={user} className="token-container">{createToken(user, props.users)}</div>
       )
     });
 
@@ -21,12 +43,21 @@ export default function ChoreTable(props) {
         className="chore-row"
       >
         <div className="chore-complete-container">
-          <button
-            onClick={props.handleCompleteChore}
-            value={chore.title}
-          >
-            I Did It
-          </button>
+
+          {props.users.length !== completedBy.length
+            ? <button
+                onClick={props.handleCompleteChore}
+                value={chore.title}
+              >
+                Done
+              </button>
+            : <button
+                onClick={props.handleResetChore}
+                value={chore.title}
+              >
+                Reset
+              </button>
+          }
         </div>
         <div className="chore-title">
           {chore.title}

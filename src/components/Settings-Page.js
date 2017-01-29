@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import UserList from '../components/UserList';
+import ChoreList from '../components/ChoreList';
+
 import * as helpers from '../helpers';
 
 export default class SettingsPage extends Component {
@@ -74,7 +77,6 @@ export default class SettingsPage extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="route settings-page">
         <fieldset>
@@ -126,6 +128,17 @@ export default class SettingsPage extends Component {
             <button>Submit</button>
           </form>
         </fieldset>
+
+
+        <UserList
+          users={this.props.users}
+        />
+
+        <ChoreList
+          selectItemToEdit={this.selectItemToEdit}
+          chores={this.props.chores}
+        />
+
         <fieldset>
           <legend>Delete User Data</legend>
           <form

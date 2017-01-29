@@ -29,22 +29,28 @@ export default function Summary(props) {
 
   return (
     <div>
-      {props.currentUser !== "" ? <h3>Hello, {props.currentUser}!</h3> : <h3>Add some housemates in the settings</h3>}
+      {props.currentUser !== ""
+        ? <h3>Hello, {props.currentUser}!</h3>
+        : <h4>Add some housemates in the settings</h4>}
       {choresCurrentUserHasNotDone.length === 0 && props.chores.length > 0
         ? <h4>
-            Congratulations! You have completed all
+            Congratulations! You have completed your share
             of the household chores.
           </h4>
         : null
       }
-      {props.chores.length === 0
-        ? <h4>Add some chores in the settings to get started</h4>
-        : <div>
+      {props.chores.length > 0 && choresCurrentUserHasNotDone.length > 0
+        ? <div>
             <h4>It is your turn to do the following chores:</h4>
             <ul>
               {choresCurrentUserHasNotDone}
             </ul>
           </div>
+        : null
+      }
+      {props.chores.length === 0
+        ? <h4>Add some chores in the settings</h4>
+        : null
       }
     </div>
   );

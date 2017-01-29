@@ -3,8 +3,10 @@ import {
   COMPLETE_CHORE,
   DELETE_CHORE,
   EDIT_CHORE,
-  CLEAR_USER_DATA
+  CLEAR_USER_DATA,
+  RESET_CHORE
 } from '../actions/action-types';
+
 
 export default function choresReducer(state = [], action) {
 
@@ -36,6 +38,12 @@ export default function choresReducer(state = [], action) {
       }
 
       return newChoreList;
+
+    case RESET_CHORE:
+    // when all users have completed a chore, the chore can be reset
+      newChoresArray = [...state];
+      newChoresArray[action.payload].completedBy = [];
+      return newChoresArray;
 
     case DELETE_CHORE:
       let newChoresArray = [...state];

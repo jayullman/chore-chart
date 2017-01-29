@@ -11,25 +11,27 @@ export default function Header(props) {
 
   // otherwise, add the list of possible users to select from
   } else {
-    userListItems = this.props.users.map(user => {
+    userListItems = props.users.map(user => {
       return (
         <option key={user.userName}>{user.userName}</option>
       );
     });
   }
-  
+
   return (
     <div className="App-header">
       <h2>Chore Chart</h2>
-      <label>
-        user:
-        <select
-          value={props.currentUser}
-          onChange={props.handleUserSelect}
-        >
-            {userListItems}
-        </select>
-      </label>
+      <div className="login-box">
+        <label>
+          user:
+          <select
+            value={props.currentUser}
+            onChange={props.handleUserSelect}
+          >
+              {userListItems}
+          </select>
+        </label>
+      </div>
       <NavBar changeView={props.changeView}/>
     </div>
   );

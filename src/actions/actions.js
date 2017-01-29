@@ -8,7 +8,8 @@ import {
   EDIT_USER,
   EDIT_CHORE,
   CHANGE_VIEW,
-  CLEAR_USER_DATA
+  CLEAR_USER_DATA,
+  RESET_CHORE
 } from './action-types';
 
 
@@ -49,6 +50,13 @@ export function completeChore(choreTitle, currentUser) {
 export function deleteChore(choreIndex) {
   return {
     type: DELETE_CHORE,
+    payload: choreIndex
+  }
+}
+
+export function resetChore(choreIndex) {
+  return {
+    type: RESET_CHORE,
     payload: choreIndex
   }
 }

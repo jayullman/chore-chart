@@ -18,6 +18,16 @@
   font-size: large;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.login-box {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
 
 .chore-table {
   border: 1px solid black;
@@ -59,12 +69,23 @@
 .completed-by {
   align-self: center;
   text-align: left;
-  flex: 1 2 200px;
+  flex: 2 2 200px;
+}
+
+.token-container {
+  display: inline-flex;
+  display: inline-table;
+  vertical-align: middle;
+  margin: 5px 10px;
 }
 
 .token {
-  display: inline-block;
-  padding-left: 10px;
+  display: table-cell;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: .8em;
 }
 
 

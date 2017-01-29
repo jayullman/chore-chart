@@ -11,13 +11,12 @@ import {
   selectUser,
   completeChore,
   changeView,
-  clearUserData
+  clearUserData,
+  resetChore
 } from '../actions/actions';
 
 
 import SettingsPage from '../components/Settings-Page';
-import ChoreList from '../components/ChoreList';
-import UserList from '../components/UserList';
 import ChoreTable from '../components/ChoreTable';
 import Summary from '../components/Summary';
 import Modal from '../components/Modal';
@@ -25,6 +24,8 @@ import EditBox from './EditBox';
 import Header from '../components/Header';
 
 import * as view from '../view-types';
+import * as helper from '../helpers';
+
 
 
 
@@ -57,6 +58,12 @@ class App extends Component {
   handleCompleteChore = (event) => {
     const choreTitle = event.target.value;
     this.props.completeChore(choreTitle, this.props.currentUser);
+  }
+
+  handleResetChore = (event) => {
+    const choreTitle = event.target.value;
+    const choreIndex = helper.findIndexOfChore(this.props.chores, choreTitle);
+    this.props.resetChore(choreIndex);
   }
 
   openModal = (message, type) => {
@@ -100,15 +107,8 @@ class App extends Component {
 
 
   render() {
-
-
-    console.log(this.props.changeView);
     return (
-
-
         <div className="App">
-          <p>{this.props.currentView}</p>
-
         {this.state.isEditOpen
           ? <div
               onClick={this.closeEdit}
@@ -172,6 +172,7 @@ class App extends Component {
             chores={this.props.chores}
             users={this.props.users}
             handleCompleteChore={this.handleCompleteChore}
+            handleResetChore={this.handleResetChore}
           />
           : null
         }
@@ -185,23 +186,11 @@ class App extends Component {
               users={this.props.users}
               chores={this.props.chores}
               clearUserData={this.props.clearUserData}
+              selectItemToEdit={this.selectItemToEdit}
           />
           : null
 
         }
-
-        <h3>Current Chores</h3>
-        <ChoreList
-          selectItemToEdit={this.selectItemToEdit}
-          chores={this.props.chores}
-        />
-        <UserList
-          selectItemToEdit={this.selectItemToEdit}
-          users={this.props.users}
-        />
-
-
-
 
       </div>
 
@@ -225,7 +214,8 @@ function mapDispatchToProps(dispatch) {
     selectUser: selectUser,
     completeChore: completeChore,
     changeView: changeView,
-    clearUserData: clearUserData
+    clearUserData: clearUserData,
+    resetChore: resetChore
   }, dispatch);
 }
 

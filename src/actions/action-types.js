@@ -17,3 +17,5 @@ export const EDIT_CHORE = "EDIT_CHORE";
 export const CHANGE_VIEW = "CHANGE_VIEW";
 
 export const CLEAR_USER_DATA = "CLEAR_USER_DATA";
+
+export const RESET_CHORE = "RESET_CHORE";

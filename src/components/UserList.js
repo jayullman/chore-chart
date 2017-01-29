@@ -26,6 +26,7 @@ export default function UserList(props) {
 
   return (
     <div>
+      <h4>Current Housemates (click to edit)</h4>
       {userListItems}
     </div>
   )
