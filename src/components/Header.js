@@ -23,7 +23,7 @@ export default function Header(props) {
       <h2>Chore Chart</h2>
       <div className="login-box">
         <label>
-          user:
+          User:
           <select
             value={props.currentUser}
             onChange={props.handleUserSelect}

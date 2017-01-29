@@ -74,6 +74,8 @@ export default function ChoreTable(props) {
 
   return (
     <div className="chore-table">
+      <h3>Chore Chart</h3>
+      <h5>Click Done to add your token to the chore</h5>
 
 
           {rows}

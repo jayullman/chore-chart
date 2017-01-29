@@ -9,7 +9,7 @@ export default function Modal(props) {
   switch (props.type) {
 
     case CONFIRM:
-      modalColor = "green";
+      modalColor = "rgb(142, 217, 208)";
       break;
 
     case ERROR:
@@ -18,7 +18,7 @@ export default function Modal(props) {
       break;
 
     default:
-      modalColor = "green"
+      modalColor = "rgb(142, 217, 208)"
       break;
   }
 
@@ -34,7 +34,7 @@ export default function Modal(props) {
         style={{backgroundColor: modalColor}}
 
       >
-        <h4>{props.message}</h4>
+        <p>{props.message}</p>
       </div>
 
 

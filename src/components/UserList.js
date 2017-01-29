@@ -9,6 +9,7 @@ export default function UserList(props) {
   const userListItems = userList.map((user, i) => {
     return (
         <div
+          className="list-item"
           key={i+ '_' + user}
         >
           <a

@@ -9,6 +9,7 @@ export default function ChoreList(props) {
   const choreListItems = choreList.map((chore, i) => {
     return (
         <div
+          className="list-item"
           key={i+ '_' + chore.title}
         >
           <a

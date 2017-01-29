@@ -79,7 +79,7 @@ export default class SettingsPage extends Component {
   render() {
     return (
       <div className="route settings-page">
-        <fieldset>
+        <fieldset className="fieldset">
           <legend>Add Housemate</legend>
           <form
             onSubmit={this.handleSubmitHousemate}
@@ -94,6 +94,7 @@ export default class SettingsPage extends Component {
                 placeholder="Enter Name"
               />
             </label>
+            <div className="form-group">
             <label>
               Token Color
               <select
@@ -108,10 +109,12 @@ export default class SettingsPage extends Component {
               </select>
             </label>
             <button>Submit</button>
+          </div>
           </form>
         </fieldset>
-        <fieldset>
+        <fieldset className="fieldset">
           <legend>Add Chore</legend>
+          <div className="form-group">
           <form
             onSubmit={this.handleSubmitChore}
           >
@@ -127,6 +130,7 @@ export default class SettingsPage extends Component {
             </label>
             <button>Submit</button>
           </form>
+        </div>
         </fieldset>
 
 
@@ -139,7 +143,7 @@ export default class SettingsPage extends Component {
           chores={this.props.chores}
         />
 
-        <fieldset>
+        <fieldset className="fieldset">
           <legend>Delete User Data</legend>
           <form
             onSubmit={this.handleDeleteData}
