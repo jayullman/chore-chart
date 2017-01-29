@@ -1,11 +1,10 @@
 // TODO: Add completedBy property to chores and action to add users
 
-import React, { Component } from 'react';
+import React from 'react';
 
 export default function ChoreTable(props) {
 
   const choreList = props.chores;
-  const userList = props.users;
 
   const rows = choreList.map((chore, i) => {
     // create list of who completed each chore
@@ -15,7 +14,6 @@ export default function ChoreTable(props) {
         <div key={user} className="token">{user}</div>
       )
     });
-
 
     return (
       <div

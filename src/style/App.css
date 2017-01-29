@@ -98,7 +98,7 @@
   position: absolute;
   z-index: 1000;
   padding: 10px;
-  top: 30%;
+  top: 15%;
   width: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -116,11 +116,11 @@
   transition: top 500ms ease-in,
               opacity 500ms ease-in;
   opacity: 1;
-  top: 30%;
+  top: 15%;
 }
 
 .modal-transition-leave {
-  top: 30%;
+  top: 15%;
 }
 
 .modal-transition-leave.modal-transition-leave-active {

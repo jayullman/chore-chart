@@ -17,6 +17,7 @@ import SettingsPage from './components/Settings-Page';
 import ChoreList from './components/ChoreList';
 import UserList from './components/UserList';
 import ChoreTable from './components/ChoreTable';
+import Summary from './components/Summary';
 import Modal from './components/Modal';
 
 // during development, the different routes will all be
@@ -30,10 +31,12 @@ class App extends Component {
     this.state = {
       isModalOpen: false,
       modalMessage: "Greetings!",
-      modalType: ""
+      modalType: "",
+      isEditOpen: false
     }
   }
 
+// TODO: Add edit dialogue box to change/delete usernames and chores
 
   // handles when the active user is selected from the
   // drop down menu
@@ -57,7 +60,7 @@ class App extends Component {
     });
     setTimeout(() => {
       this.closeModal();
-    }, 2500)
+    }, 1200)
   }
 
   closeModal = () => {
@@ -81,9 +84,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* temp button to test modal */}
-
-        <button onClick={() => {this.openModal()}}>Open Modal</button>
 
         {this.state.isModalOpen
           ? <div
@@ -116,8 +116,12 @@ class App extends Component {
               {userListItems}
           </select>
         </div>
-        <div className="route index-page">
+        <div className="route summary-page">
         </div>
+        <Summary
+          chores={this.props.chores}
+          currentUser={this.props.currentUser}
+        />
         <div className="route chore-tracker-page">
         </div>
         <SettingsPage

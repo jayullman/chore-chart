@@ -13,6 +13,7 @@ export default function currentUserReducer(state = "", action) {
         console.log('yo');
         return action.payload.userName;
       }
+      break;
 
     default:
       return state;
