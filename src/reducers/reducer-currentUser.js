@@ -12,8 +12,10 @@ export default function currentUserReducer(state = "", action) {
       if (state === "") {
         console.log('yo');
         return action.payload.userName;
+      } else {
+        return state;
       }
-      break;
+      
 
     default:
       return state;

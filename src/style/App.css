@@ -129,3 +129,39 @@
   top: -100px;
   opacity: 0;
 }
+
+/* EditBox Styles and Transitions */
+
+
+.edit-box {
+  position: absolute;
+  z-index: 1000;
+  padding: 10px;
+  top: 15%;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  border-radius: 20px;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.edit-box-transition-enter {
+  opacity: 0;
+}
+
+.edit-box-transition-enter.edit-box-transition-enter-active {
+  transition: opacity 500ms ease-in;
+  opacity: 1;
+
+}
+
+.edit-box-transition-leave {
+  opacity: 1;
+}
+
+.edit-box-transition-leave.edit-box-transition-leave-active {
+  transition: opacity 500ms ease-in;
+  opacity: 0;
+}

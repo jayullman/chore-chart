@@ -19,6 +19,7 @@ import UserList from './components/UserList';
 import ChoreTable from './components/ChoreTable';
 import Summary from './components/Summary';
 import Modal from './components/Modal';
+import EditBox from './containers/EditBox';
 
 // during development, the different routes will all be
 // present on the main page until routing is learned
@@ -67,6 +68,19 @@ class App extends Component {
     this.setState({ isModalOpen: false});
   }
 
+  openEdit = () => {
+    this.setState({isEditOpen: true});
+  }
+
+  closeEdit = () => {
+    this.setState({ isEditOpen: false});
+  }
+
+  selectItemToEdit = (item) => {
+    this.setState({editItem: item});
+    this.openEdit();
+  }
+
   render() {
     // if there are no users added, render the following <option>
     let userListItems;
@@ -91,6 +105,27 @@ class App extends Component {
               className="backdrop"
             />
           : null}
+        {this.state.isEditOpen
+          ? <div
+              onClick={this.closeEdit}
+              className="backdrop"
+            />
+          : null}
+
+        <ReactCSSTransitionGroup
+          transitionName="edit-box-transition"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          {this.state.isEditOpen
+            ? <EditBox
+                onClose={() => {this.closeEdit()}}
+                editItem={this.state.editItem}
+              />
+            : null}
+
+        </ReactCSSTransitionGroup>
+
 
         <ReactCSSTransitionGroup
           transitionName="modal-transition"
@@ -120,6 +155,7 @@ class App extends Component {
         </div>
         <Summary
           chores={this.props.chores}
+          users={this.props.users}
           currentUser={this.props.currentUser}
         />
         <div className="route chore-tracker-page">
@@ -131,9 +167,11 @@ class App extends Component {
         />
         <h3>Current Chores</h3>
         <ChoreList
+          selectItemToEdit={this.selectItemToEdit}
           chores={this.props.chores}
         />
         <UserList
+          selectItemToEdit={this.selectItemToEdit}
           users={this.props.users}
         />
         <ChoreTable

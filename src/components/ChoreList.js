@@ -14,7 +14,7 @@ export default function ChoreList(props) {
           {chore.title}
           <button
             onClick={()=>{
-              console.log(chore)
+              props.selectItemToEdit(chore);
             }}
           >
             edit

@@ -4,14 +4,28 @@ import React from 'react';
 
 export default function Summary(props) {
 
+  //create array of users not the currentUser
+  const otherUsers = props.users.filter(user => {
+    if (user.userName !== props.currentUser) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  console.log(otherUsers);
   // create array of <li>'s of chores not completed by the
   // current user
-  let choresCurrentUserHasNotDone = []
+  let choresCurrentUserHasNotDone = [];
+  let choresCurrentUserHasDone = [];
   props.chores.forEach(chore => {
         if (chore.completedBy.indexOf(props.currentUser) < 0) {
           choresCurrentUserHasNotDone.push(<li key={chore.title}>{chore.title}</li>);
+        } else {
+          choresCurrentUserHasDone.push(<li key={chore.title}>{chore.title}</li>);
         }
     });
+
+  
 
 
   return (

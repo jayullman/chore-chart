@@ -1,5 +1,9 @@
-import { ADD_CHORE, COMPLETE_CHORE } from '../actions/action-types';
-
+import {
+  ADD_CHORE,
+  COMPLETE_CHORE,
+  DELETE_CHORE,
+  DELETE_USER 
+} from '../actions/action-types';
 
 export default function choresReducer(state = [], action) {
 
@@ -31,6 +35,11 @@ export default function choresReducer(state = [], action) {
       console.log(chore);
       console.log(action.currentUser);
       return newChoreList;
+
+    case DELETE_CHORE:
+      let newChoresArray = [...state];
+       newChoresArray.splice(action.payload, 1);
+       return newChoresArray;
 
     default:
       return state;
