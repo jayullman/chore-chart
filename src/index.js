@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 
+import './style/normalize.css';
 import './style/index.css';
 
 // import reducers

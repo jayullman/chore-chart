@@ -32,6 +32,7 @@ export default class SettingsPage extends Component {
     let userColor = this.state.colorSelect;
     this.props.addUserActionCreator(userName, userColor);
     this.setState({nameInput: ""});
+    this.props.openModal(userName + ' was added as a housemate');
   }
 
   handleSubmitChore = (event) => {
@@ -39,6 +40,7 @@ export default class SettingsPage extends Component {
     let chore = this.state.choreInput;
     this.props.addChoreActionCreator(chore);
     this.setState({choreInput: ""});
+    this.props.openModal(chore + ' added to chores');
   }
 
   render() {

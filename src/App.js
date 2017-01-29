@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './style/App.css';
 
 import { bindActionCreators } from 'redux'
@@ -16,12 +17,22 @@ import SettingsPage from './components/Settings-Page';
 import ChoreList from './components/ChoreList';
 import UserList from './components/UserList';
 import ChoreTable from './components/ChoreTable';
-
+import Modal from './components/Modal';
 
 // during development, the different routes will all be
 // present on the main page until routing is learned
 
+// Created modal window with help from tutorial at:
+// https://peteris.rocks/blog/modal-window-in-react-from-scratch/
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isModalOpen: false,
+      modalMessage: "Greetings!",
+      modalType: ""
+    }
+  }
 
 
   // handles when the active user is selected from the
@@ -38,6 +49,21 @@ class App extends Component {
     this.props.completeChore(choreTitle, this.props.currentUser);
   }
 
+  openModal = (message) => {
+    console.log(message);
+    this.setState({
+      modalMessage: message,
+      isModalOpen: true
+    });
+    setTimeout(() => {
+      this.closeModal();
+    }, 2500)
+  }
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false});
+  }
+
   render() {
     // if there are no users added, render the following <option>
     let userListItems;
@@ -52,9 +78,35 @@ class App extends Component {
         );
       });
     }
-console.log(this.props.currentUser);
+
     return (
       <div className="App">
+        {/* temp button to test modal */}
+
+        <button onClick={() => {this.openModal()}}>Open Modal</button>
+
+        {this.state.isModalOpen
+          ? <div
+              onClick={this.closeModal}
+              className="backdrop"
+            />
+          : null}
+
+        <ReactCSSTransitionGroup
+          transitionName="modal-transition"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          {this.state.isModalOpen
+            ? <Modal
+                onClose={() => {this.closeModal()}}
+                message={this.state.modalMessage}
+                type={this.state.modalType}
+              />
+            : null}
+
+        </ReactCSSTransitionGroup>
+
         <div className="App-header">
           <h2>Chore Chart</h2>
           <select
@@ -71,6 +123,7 @@ console.log(this.props.currentUser);
         <SettingsPage
             addUserActionCreator={this.props.addUser}
             addChoreActionCreator={this.props.addChore}
+            openModal={this.openModal}
         />
         <h3>Current Chores</h3>
         <ChoreList
