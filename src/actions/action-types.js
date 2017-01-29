@@ -13,3 +13,7 @@ export const DELETE_USER = "DELETE_USER";
 export const EDIT_USER = "EDIT_USER";
 
 export const EDIT_CHORE = "EDIT_CHORE";
+
+export const CHANGE_VIEW = "CHANGE_VIEW";
+
+export const CLEAR_USER_DATA = "CLEAR_USER_DATA";

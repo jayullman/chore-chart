@@ -20,6 +20,7 @@ if (localStorage.getItem('users')) {
     chores: JSON.parse(localStorage.getItem('chores')),
     users: JSON.parse(localStorage.getItem('users')),
     currentUser: JSON.parse(localStorage.getItem('currentUser')),
+    currentView: "MAIN"
   }
 }
 

@@ -97,7 +97,7 @@
 .modal {
   position: fixed;
   z-index: 1000;
-  padding: 10px;
+  padding: 5px;
   top: 50px;
   width: 80%;
   left: 50%;
@@ -167,4 +167,19 @@
 .edit-box-transition-leave.edit-box-transition-leave-active {
   transition: opacity 250ms ease-in;
   opacity: 0;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+.navbar {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+
 }

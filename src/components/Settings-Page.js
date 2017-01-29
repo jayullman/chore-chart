@@ -65,9 +65,12 @@ export default class SettingsPage extends Component {
 
   }
 
-  // this function will clear our localStorage
-  handleDeleteData(event) {
+  // this function will clear our localStorage and reset the store
+  // to its default values
+  handleDeleteData = () => {
     localStorage.clear();
+    this.props.clearUserData();
+    this.props.openModal('All data has been deleted');
   }
 
   render() {

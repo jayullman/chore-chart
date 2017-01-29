@@ -6,7 +6,9 @@ import {
   DELETE_CHORE,
   DELETE_USER,
   EDIT_USER,
-  EDIT_CHORE
+  EDIT_CHORE,
+  CHANGE_VIEW,
+  CLEAR_USER_DATA
 } from './action-types';
 
 
@@ -71,5 +73,18 @@ export function editChore(choreObject, choreIndex) {
     type: EDIT_CHORE,
     payload: choreObject,
     oldIndex: choreIndex
+  }
+}
+
+export function changeView(newView) {
+  return {
+    type: CHANGE_VIEW,
+    payload: newView
+    }
+}
+
+export function clearUserData() {
+  return {
+    type: CLEAR_USER_DATA
   }
 }

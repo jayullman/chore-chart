@@ -9,7 +9,9 @@ import {
   addUser,
   addChore,
   selectUser,
-  completeChore
+  completeChore,
+  changeView,
+  clearUserData
 } from '../actions/actions';
 
 
@@ -20,6 +22,7 @@ import ChoreTable from '../components/ChoreTable';
 import Summary from '../components/Summary';
 import Modal from '../components/Modal';
 import EditBox from './EditBox';
+import Header from '../components/Header';
 
 
 
@@ -55,14 +58,24 @@ class App extends Component {
   }
 
   openModal = (message, type) => {
-    this.setState({
-      modalMessage: message,
-      isModalOpen: true,
-      modalType: type == undefined ? "" : type
-    });
-    setTimeout(() => {
-      this.closeModal();
-    }, 1200)
+
+    // ensure that new modal waits for current one to finish
+    if (this.state.isModalOpen) {
+      this.setState({isModalOpen: false});
+      setTimeout(() => {
+        this.openModal(message, type);
+      }, 800)
+    } else {
+      this.setState({
+        modalMessage: message,
+        isModalOpen: true,
+        modalType: type === undefined ? "" : type
+      });
+      setTimeout(() => {
+        this.closeModal();
+      }, 1200)
+    }
+
   }
 
   closeModal = () => {
@@ -96,12 +109,12 @@ class App extends Component {
         );
       });
     }
-
+    console.log(this.props.changeView);
     return (
 
 
         <div className="App">
-
+          <p>{this.props.currentView}</p>
 
         {this.state.isEditOpen
           ? <div
@@ -141,15 +154,13 @@ class App extends Component {
 
         </ReactCSSTransitionGroup>
 
-        <div className="App-header">
-          <h2>Chore Chart</h2>
-          <select
-            value={this.props.currentUser}
-            onChange={this.handleUserSelect}
-          >
-              {userListItems}
-          </select>
-        </div>
+        <Header
+          currentUser={this.props.currentUser}
+          handleUserSelect={this.handleUserSelect}
+          userList={userListItems}
+          changeView={this.props.changeView}
+        />
+
         <div className="route summary-page">
         </div>
         <Summary
@@ -165,8 +176,8 @@ class App extends Component {
             openModal={this.openModal}
             users={this.props.users}
             chores={this.props.chores}
+            clearUserData={this.props.clearUserData}
         />
-
 
         <h3>Current Chores</h3>
         <ChoreList
@@ -197,7 +208,8 @@ function mapStateToProps(state) {
   return {
     chores: state.chores,
     users: state.users,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentView: state.currentView
   }
 }
 
@@ -206,7 +218,9 @@ function mapDispatchToProps(dispatch) {
     addUser: addUser,
     addChore: addChore,
     selectUser: selectUser,
-    completeChore: completeChore
+    completeChore: completeChore,
+    changeView: changeView,
+    clearUserData: clearUserData
   }, dispatch);
 }
 

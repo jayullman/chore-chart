@@ -2,7 +2,8 @@ import {
   ADD_CHORE,
   COMPLETE_CHORE,
   DELETE_CHORE,
-  EDIT_CHORE
+  EDIT_CHORE,
+  CLEAR_USER_DATA
 } from '../actions/action-types';
 
 export default function choresReducer(state = [], action) {
@@ -33,8 +34,7 @@ export default function choresReducer(state = [], action) {
       if (chore.completedBy.indexOf(action.currentUser) < 0) {
         chore.completedBy.push(action.currentUser)
       }
-      console.log(chore);
-      console.log(action.currentUser);
+
       return newChoreList;
 
     case DELETE_CHORE:
@@ -46,6 +46,9 @@ export default function choresReducer(state = [], action) {
        newChoresArray = [...state];
        newChoresArray.splice(action.oldIndex, 1, action.payload);
        return newChoresArray;
+
+      case CLEAR_USER_DATA:
+        return [];
 
     default:
       return state;

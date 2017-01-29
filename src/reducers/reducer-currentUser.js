@@ -1,4 +1,8 @@
-import { SELECT_USER, ADD_USER } from '../actions/action-types';
+import {
+  SELECT_USER,
+  ADD_USER, 
+  CLEAR_USER_DATA
+} from '../actions/action-types';
 
 export default function currentUserReducer(state = "", action) {
 
@@ -16,6 +20,8 @@ export default function currentUserReducer(state = "", action) {
         return state;
       }
 
+    case CLEAR_USER_DATA:
+      return "";
 
     default:
       return state;
