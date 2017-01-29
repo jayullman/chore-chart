@@ -24,6 +24,8 @@ import Modal from '../components/Modal';
 import EditBox from './EditBox';
 import Header from '../components/Header';
 
+import * as view from '../view-types';
+
 
 
 // during development, the different routes will all be
@@ -95,20 +97,11 @@ class App extends Component {
     this.openEdit();
   }
 
-  render() {
-    // if there are no users added, render the following <option>
-    let userListItems;
-    if (this.props.users.length === 0) {
-      userListItems = <option>Add Housemate in Settings</option>;
 
-    // otherwise, add the list of possible users to select from
-    } else {
-      userListItems = this.props.users.map(user => {
-        return (
-          <option key={user.userName}>{user.userName}</option>
-        );
-      });
-    }
+
+  render() {
+
+
     console.log(this.props.changeView);
     return (
 
@@ -157,27 +150,45 @@ class App extends Component {
         <Header
           currentUser={this.props.currentUser}
           handleUserSelect={this.handleUserSelect}
-          userList={userListItems}
           changeView={this.props.changeView}
+          users={this.props.users}
         />
 
-        <div className="route summary-page">
-        </div>
-        <Summary
-          chores={this.props.chores}
-          users={this.props.users}
-          currentUser={this.props.currentUser}
-        />
-        <div className="route chore-tracker-page">
-        </div>
-        <SettingsPage
-            addUserActionCreator={this.props.addUser}
-            addChoreActionCreator={this.props.addChore}
-            openModal={this.openModal}
-            users={this.props.users}
+        {/* Conditional rendering based on currentView state */}
+
+        {this.props.currentView === view.MAIN
+          ? <Summary
+            className="view-page"
             chores={this.props.chores}
-            clearUserData={this.props.clearUserData}
-        />
+            users={this.props.users}
+            currentUser={this.props.currentUser}
+          />
+          : null
+        }
+
+        {this.props.currentView === view.CHORE_CHART
+          ? <ChoreTable
+            className="view-page"
+            chores={this.props.chores}
+            users={this.props.users}
+            handleCompleteChore={this.handleCompleteChore}
+          />
+          : null
+        }
+
+        {this.props.currentView === view.SETTINGS
+          ? <SettingsPage
+              className="view-page"
+              addUserActionCreator={this.props.addUser}
+              addChoreActionCreator={this.props.addChore}
+              openModal={this.openModal}
+              users={this.props.users}
+              chores={this.props.chores}
+              clearUserData={this.props.clearUserData}
+          />
+          : null
+
+        }
 
         <h3>Current Chores</h3>
         <ChoreList
@@ -188,15 +199,9 @@ class App extends Component {
           selectItemToEdit={this.selectItemToEdit}
           users={this.props.users}
         />
-        <ChoreTable
-          chores={this.props.chores}
-          users={this.props.users}
-          handleCompleteChore={this.handleCompleteChore}
-        />
 
-        <div>
-          {this.props.children}
-        </div>
+
+
 
       </div>
 
