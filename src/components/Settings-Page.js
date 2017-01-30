@@ -37,10 +37,14 @@ export default class SettingsPage extends Component {
     let userColor = this.state.colorSelect;
 
     // check if user is unique
-    if (helpers.findIndexOfUser(this.props.users, userName) < 0) {
+    if (helpers.findIndexOfUser(this.props.users, userName) < 0
+      && this.state.nameInput !== "") {
       this.props.addUserActionCreator(userName, userColor);
       this.setState({nameInput: ""});
       this.props.openModal(userName + ' was added as a housemate');
+
+    } else if (this.state.nameInput === "") {
+      this.props.openModal('Field cannot be empty', "ERROR");
 
     // if user already exists, do not add to store and give error modal
     } else {
@@ -52,16 +56,18 @@ export default class SettingsPage extends Component {
   handleSubmitChore = (event) => {
     event.preventDefault();
     let chore = this.state.choreInput;
-
     // check if chore is unique
-    if (helpers.findIndexOfChore(this.props.chores, chore) < 0) {
-
+    if (helpers.findIndexOfChore(this.props.chores, chore) < 0
+      && this.state.choreInput !== "") {
       this.props.addChoreActionCreator(chore);
       this.setState({choreInput: ""});
       this.props.openModal(chore + ' added to chores');
 
       // if chore already exists, do not add to store and give error modal
-    } else {
+    } else if (this.state.choreInput === "") {
+      this.props.openModal('Field cannot be empty', "ERROR");
+    }
+    else {
       this.props.openModal(chore + ' already exists', "ERROR");
 
     }

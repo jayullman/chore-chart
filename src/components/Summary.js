@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import Intro from './Intro';
+
 export default function Summary(props) {
 
 /* Functionality not used yet
@@ -27,10 +29,11 @@ export default function Summary(props) {
     });
 
 
-
-
   return (
     <div>
+      {props.users.length === 0
+        ? <Intro />
+        : null}
       {props.currentUser !== ""
         ? <h3>Hello, {props.currentUser}!</h3>
         : <h4>Add some housemates in the settings</h4>}

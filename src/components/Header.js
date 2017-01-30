@@ -19,19 +19,6 @@ export default function Header(props) {
   return (
     <div className="App-header">
       <h1>Chore Chart</h1>
-      <div className="git-hub-project">
-        View this project on&nbsp;
-        <a
-          target="_blank"
-          href="https://github.com/libeja/chore-chart"
-        >
-          GitHub&nbsp;
-          <i
-            className="fa fa-github"
-            aria-hidden="true"
-          ></i>
-        </a>
-      </div>
       <div className="login-box">
         <label>
           User:
