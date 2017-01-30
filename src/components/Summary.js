@@ -4,6 +4,7 @@ import React from 'react';
 
 export default function Summary(props) {
 
+/* Functionality not used yet
   //create array of users not the currentUser
   const otherUsers = props.users.filter(user => {
     if (user.userName !== props.currentUser) {
@@ -12,6 +13,7 @@ export default function Summary(props) {
       return false;
     }
   });
+*/
   // create array of <li>'s of chores not completed by the
   // current user
   let choresCurrentUserHasNotDone = [];

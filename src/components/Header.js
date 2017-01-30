@@ -2,8 +2,6 @@ import React from 'react';
 import NavBar from './NavBar';
 
 export default function Header(props) {
-  console.log(props);
-
   // if there are no users added, render the following <option>
   let userListItems;
   if (props.users.length === 0) {

@@ -3,8 +3,6 @@
 // because it will be involved with heavily editing the store
 
 
-// TODO: Fix styles on edit box
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -23,7 +21,6 @@ import * as helpers from '../helpers';
 class EditBox extends Component {
   constructor(props) {
     super(props);
-    console.log(deleteChore)
     if (props.editItem.userName) {
       this.state = {
         type: "user",
@@ -122,7 +119,7 @@ class EditBox extends Component {
                 <h3>Edit Housemate</h3>
                 <div className="group">
                   <label className="form-group">
-                    Name:&nbsp;
+                    Name:&nbsp;&nbsp;
                     <input
                       autoFocus
                       value={this.state.nameInput}
@@ -132,7 +129,7 @@ class EditBox extends Component {
                     />
                   </label>
                   <label className="form-group">
-                    Token Color
+                    Token Color:&nbsp;&nbsp;
                     <select
                       value={this.state.colorSelect}
                       onChange={this.handleUserColorSelectChange}

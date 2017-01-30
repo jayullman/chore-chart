@@ -8,7 +8,6 @@ import {
 import * as view from '../view-types';
 
 export default function currentViewReducer(state = view.MAIN, action) {
-  console.log(action)
   switch (action.type) {
     case CHANGE_VIEW:
       return action.payload;

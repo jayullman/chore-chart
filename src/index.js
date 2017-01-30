@@ -34,14 +34,11 @@ store.subscribe(() => {
 
   for (let item in currentState) {
     if (currentState.hasOwnProperty(item)) {
-
-      console.log(currentState[item]);
       localStorage.setItem(item, JSON.stringify(currentState[item]));
     }
   }
 
 })
-console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

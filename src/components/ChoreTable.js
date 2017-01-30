@@ -4,9 +4,7 @@ function createToken(name, users) {
   // get user object
   let userObject = null;
   userObject = users.find((user) => {
-    if (user.userName === name) {
-      return true;
-    }
+    return user.userName === name
   });
 
   // return a blank token if the user has been deleted
@@ -24,8 +22,6 @@ function createToken(name, users) {
     );
   }
 
-  console.log(userObject.userName);
-  console.log(userObject.color);
   return (
     <div
       style={{

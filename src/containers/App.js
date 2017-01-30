@@ -46,8 +46,6 @@ class App extends Component {
     }
   }
 
-// TODO: Add edit dialogue box to change/delete usernames and chores
-
   // handles when the active user is selected from the
   // drop down menu
   handleUserSelect = (event) => {

@@ -145,7 +145,7 @@ export default class SettingsPage extends Component {
           chores={this.props.chores}
         />
 
-        <fieldset className="fieldset">
+        <fieldset className="fieldset delete-user-data">
           <legend>Delete User Data</legend>
           <form
             onSubmit={this.handleDeleteData}

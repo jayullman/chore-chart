@@ -10,7 +10,6 @@ export default function usersReducer(state = [], action) {
 
   switch (action.type) {
     case ADD_USER:
-    // TODO: do not add duplicate user
       return [...state, action.payload]
 
     case DELETE_USER:

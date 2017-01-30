@@ -9,9 +9,8 @@ import {
 
 
 export default function choresReducer(state = [], action) {
-
+  let newChoresArray = [];
   switch (action.type) {
-    // TODO: do not add duplicate chore
     case ADD_CHORE:
       let newChore = {
         title: action.payload,
@@ -46,7 +45,7 @@ export default function choresReducer(state = [], action) {
       return newChoresArray;
 
     case DELETE_CHORE:
-      let newChoresArray = [...state];
+      newChoresArray = [...state];
        newChoresArray.splice(action.payload, 1);
        return newChoresArray;
 
