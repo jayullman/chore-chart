@@ -24,6 +24,12 @@ export default function Intro() {
         housemate name or chore title. The Summary section tells you which chores
         you have yet to complete for the current cycle.
       </p>
+      <p>
+        Check out the projects <a target="_blank"
+          href="https://github.com/libeja/chore-chart/blob/master/README.md">
+          README.md on GitHub</a> for more information and implementation
+        details.
+      </p>
     </div>
   );
 }
