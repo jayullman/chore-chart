@@ -18,7 +18,7 @@ export default function Header(props) {
 
   return (
     <div className="App-header">
-      <h1>Chore Chart</h1>
+      <h1>Housemate Chore Chart</h1>
       <div className="login-box">
         <label>
           User:
