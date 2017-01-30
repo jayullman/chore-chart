@@ -22,6 +22,7 @@ import Summary from '../components/Summary';
 import Modal from '../components/Modal';
 import EditBox from './EditBox';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 import * as view from '../view-types';
 import * as helper from '../helpers';
@@ -155,7 +156,7 @@ class App extends Component {
         />
 
         {/* Conditional rendering based on currentView state */}
-
+        <div className="main-content">
         {this.props.currentView === view.MAIN
           ? <Summary
             className="view-page"
@@ -191,7 +192,8 @@ class App extends Component {
           : null
 
         }
-
+        </div>
+        <Footer />
       </div>
 
     );

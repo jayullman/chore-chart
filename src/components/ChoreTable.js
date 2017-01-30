@@ -75,7 +75,10 @@ export default function ChoreTable(props) {
   return (
     <div className="chore-table">
       <h3>Chore Chart</h3>
-      <h5>Click Done to add your token to the chore</h5>
+      {props.chores.length > 0
+        ? <h5>Click Done to add your token to the chore</h5>
+        : <h5>You must first add some chores in the settings</h5>
+      }
 
 
           {rows}
