@@ -158,7 +158,7 @@ fieldset select {
 .chore-title {
   align-self: center;
   text-align: left;
-  flex: 1 2 200px;
+  flex: 1 3 175px;
 }
 
 .chore-complete-container {
@@ -170,11 +170,11 @@ fieldset select {
 .completed-by {
   align-self: center;
   text-align: left;
-  flex: 3 2 200px;
+  flex: 3 1 200px;
 }
 
 .token-container {
-  display: inline-flex;
+  /*display: inline-flex;*/
   display: inline-table;
   vertical-align: middle;
   margin: 5px 10px;
@@ -187,7 +187,6 @@ fieldset select {
   height: 50px;
   border-radius: 10px;
   box-shadow: -2px 2px 3px #000;
-
   text-align: center;
   font-size: .8em;
 }
@@ -354,4 +353,5 @@ button {
     padding-right: 0;
     width: 100px;
   }
+
 }
