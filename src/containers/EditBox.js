@@ -115,11 +115,14 @@ class EditBox extends Component {
       return (
         <div className="edit-box">
 
+
           <form onSubmit={this.confirmEdit}>
             {this.state.type === "user"
               ? <div>
-                  <label>
-                    Username
+                <h3>Edit Housemate</h3>
+                <div className="group">
+                  <label className="form-group">
+                    Name:&nbsp;
                     <input
                       autoFocus
                       value={this.state.nameInput}
@@ -128,7 +131,7 @@ class EditBox extends Component {
                       name="name"
                     />
                   </label>
-                  <label>
+                  <label className="form-group">
                     Token Color
                     <select
                       value={this.state.colorSelect}
@@ -142,9 +145,11 @@ class EditBox extends Component {
                     </select>
                   </label>
                 </div>
+                </div>
                 : <div>
+                  <h3>Edit Chore</h3>
                   <label>
-                    Chore
+                    Chore title:&nbsp;
                     <input
                       autoFocus
                       value={this.state.choreInput}
@@ -155,11 +160,11 @@ class EditBox extends Component {
                   </label>
                   </div>
               }
-            <button>OK</button>
 
+            <button onClick={this.confirmEdit}>OK</button>
+            <button onClick={this.props.onClose}>Cancel</button>
+            <button onClick={this.deleteItem}>Delete</button>
           </form>
-          <button onClick={this.props.onClose}>Cancel</button>
-          <button onClick={this.deleteItem}>Delete</button>
         </div>
       );
   }
