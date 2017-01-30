@@ -3,7 +3,7 @@
 // because it will be involved with heavily editing the store
 
 
-// TODO: complete EditBox container
+// TODO: Fix styles on edit box
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';

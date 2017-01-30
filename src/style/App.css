@@ -36,6 +36,8 @@ h1 {
   border-bottom: 2px dotted #fff;
 }
 
+
+
 a:link, a:visited, a:active {
   color: #8D6A9F;
   text-decoration: none;
@@ -43,6 +45,20 @@ a:link, a:visited, a:active {
 
 a:hover {
   border-bottom: 2px dotted #8D6A9F;
+}
+
+/* Fix lingering hover state on touch devices */
+@media (hover:none) {
+    /* Primary Input doesn't respond to hover at all, even partially (ie: there is no pointing device) */
+    a:hover {
+      border-bottom: 0;
+    }
+    .App-header a:hover {
+      border-bottom: 0;
+    }
+    .App-footer a:hover {
+      border-bottom: 0;
+    }
 }
 
 
@@ -130,7 +146,8 @@ fieldset select {
   justify-content: flex-start;
   border-bottom: 2px dashed rgb(167, 167, 167);
   margin-bottom: 5px;
-  padding: 5px 0 10px 0;
+  height: 60px;
+  padding: 20px 0 20px 0;
 }
 
 .chore-title {
@@ -148,7 +165,7 @@ fieldset select {
 .completed-by {
   align-self: center;
   text-align: left;
-  flex: 2 2 200px;
+  flex: 3 2 200px;
 }
 
 .token-container {

@@ -9,6 +9,21 @@ function createToken(name, users) {
     }
   });
 
+  // return a blank token if the user has been deleted
+  if (!userObject) {
+    return (
+      <div
+        style={{
+        color: '#fff',
+        backgroundColor: '#000'
+        }}
+        className="token"
+      >
+        deleted user
+      </div>
+    );
+  }
+
   console.log(userObject.userName);
   console.log(userObject.color);
   return (

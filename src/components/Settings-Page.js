@@ -136,10 +136,12 @@ export default class SettingsPage extends Component {
 
         <UserList
           users={this.props.users}
+          selectItemToEdit={this.props.selectItemToEdit}
+
         />
 
         <ChoreList
-          selectItemToEdit={this.selectItemToEdit}
+          selectItemToEdit={this.props.selectItemToEdit}
           chores={this.props.chores}
         />
 
