@@ -12,8 +12,7 @@ I implemented a housemate chore tracking app. The idea was based on a system I c
 
 The app was implemented using React.js as the view library and Redux for data architecture. There is no backend, and data is persisted via local storage. The user selection box is meant to simulate who is currently logged into the system.
 
-The single page app utilizes conditional rendering based on the current
-view, determined by a property in the Redux store.
+The single page app utilizes conditional rendering based on the current view, determined by a property in the Redux store.
 
 There are 3 main areas:
 1. The main screen which shows a brief summary of which chores the current user hasn't
