@@ -12,6 +12,20 @@ import './style/index.css';
 // import reducers
 import reducers from './reducers/combined-reducers.js';
 
+
+// check to see if localStorage is available
+// adapted from http://stackoverflow.com/questions/16427636/check-if-localstorage-is-available
+function isLocalStorageAvailable() {
+  var test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 // check if localStorage has been previously used for app
 // if so, load initial condition into store
 let initialState = {};
@@ -29,15 +43,16 @@ const store = createStore(reducers, initialState);
 store.subscribe(() => {
   console.log("state: ", store.getState());
 
-  // update localStorage with new state
-  let currentState = store.getState();
-
-  for (let item in currentState) {
-    if (currentState.hasOwnProperty(item)) {
-      localStorage.setItem(item, JSON.stringify(currentState[item]));
+  // update localStorage with new state if local storage is available
+  if (isLocalStorageAvailable() === true) {
+    let currentState = store.getState();
+  
+    for (let item in currentState) {
+      if (currentState.hasOwnProperty(item)) {
+        localStorage.setItem(item, JSON.stringify(currentState[item]));
+      }
     }
   }
-
 })
 
 ReactDOM.render(
