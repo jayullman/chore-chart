@@ -1,6 +1,10 @@
 # CS50 Final Project
 ## This is my submission for the CS50 final project.
 
+Live site: https://libeja.github.io/chore-chart/
+
+Presentation video (CS50 final project submission video): https://youtu.be/bEA-askLQUU
+
 ### The requirements of the project were:
 
 The final project is your opportunity to take your newfound savvy with programming out for a spin and develop your very own piece of software. So long as your project draws upon this course’s lessons, the nature of your project is entirely up to you. You may implement your project in any language(s). You are welcome to utilize infrastructure other than the CS50 Appliance. All that we ask is that you build something of interest to you, that you solve an actual problem, that you impact your community, or that you change the world.
@@ -10,8 +14,7 @@ I implemented a housemate chore tracking app. The idea was based on a system I c
 
 The app was implemented using React.js as the view library and Redux for data architecture. There is no backend, and data is persisted via local storage. The user selection box is meant to simulate who is currently logged into the system.
 
-The single page app utilizes conditional rendering based on the current
-view, determined by a property in the Redux store.
+The single page app utilizes conditional rendering based on the current view, determined by a property in the Redux store.
 
 There are 3 main areas:
 1. The main screen which shows a brief summary of which chores the current user hasn't
