@@ -1,7 +1,7 @@
 # CS50 Final Project
 ## This is my submission for the CS50 final project.
 
-Live site: https://libeja.github.io/chore-chart/
+Live site: https://jayullman.github.io/chore-chart/
 
 Presentation video (CS50 final project submission video): https://youtu.be/bEA-askLQUU
 
